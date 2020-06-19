@@ -1,0 +1,13 @@
+.loginPageLogo {
+  width: 120px;
+  height: 120px;
+  display: block;
+  margin: auto;
+}
+
+.mainRow {
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
