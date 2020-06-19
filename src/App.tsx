@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "font-awesome/css/font-awesome.min.css";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
+import { Customer } from "./pages/Customer";
+import { Dashboard } from "./pages/Dashboard";
+import { Items } from "./pages/Items";
+import { Login } from "./pages/Login";
+import { Sales } from "./pages/Sales";
+import { ProtectedRoute } from "./ProtectedRoute";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <div>
+          <Switch>
+            <Route exact path="/login" component={Login} />
+            <ProtectedRoute exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/sales" component={Sales} />
+            <Route exact path="/customer" component={Customer} />
+            <Route exact path="/items" component={Items} />
+            <Route path="*" component={() => <>page not found</>} />
+          </Switch>
+        </div>
+      </Router>
     </div>
   );
 }
