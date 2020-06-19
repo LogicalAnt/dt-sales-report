@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-import logo from "../logo.svg";
+import logo from "../../logo.svg";
 import "./styles/index.css";
 export const Login = () => {
   return (
