@@ -6,11 +6,13 @@ import App from "./App";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
 import { store } from "./store";
-
+//import { persistor, store } from "./utils/reduxPersistConfig";
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
+      {/* <PersistGate loading={null} persistor={persistor}> */}
       <App />
+      {/* </PersistGate> */}
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
