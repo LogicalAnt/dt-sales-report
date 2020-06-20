@@ -1,7 +1,13 @@
 import { AUTHENTICATE } from "../actions/types";
+interface AuthType {
+  isAuthenticated: boolean;
+  userToken: string;
+  error: object;
+}
+
 const initialState = {
   isAuthenticated: false,
-  userToken: {},
+  userToken: "",
   error: {},
 };
 
@@ -9,7 +15,10 @@ interface ActionProps {
   type: string;
   payload: { authStatus: boolean; jwt_token: string; error: object };
 }
-export const login = (state: object = initialState, action: ActionProps) => {
+export const login = (
+  state: AuthType = initialState,
+  action: ActionProps
+): AuthType => {
   switch (action.type) {
     case AUTHENTICATE:
       return {
