@@ -13,6 +13,11 @@ import { login } from "../../store/actions/auth";
 import "./styles/index.css";
 export const LoginComponent = ({ loginSubmitter }: any) => {
   let history = useHistory();
+
+  if (localStorage.getItem("token")) {
+    history.push("/dashboard");
+  }
+
   const [loginCredentials, setLoginCredentials] = useState({
     username: "",
     password: "",
@@ -20,8 +25,8 @@ export const LoginComponent = ({ loginSubmitter }: any) => {
 
   const [loginFailed, setloginFailed] = useState(false);
   store.subscribe(() => {
-    const loginState = store.getState().login;
-    const error = loginState.error;
+    const authState = store.getState().auth;
+    const error = authState.error;
     if (Object.keys(error).length) {
       setloginFailed(true);
     }
