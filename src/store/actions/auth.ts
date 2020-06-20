@@ -10,7 +10,6 @@ interface PayloadProps {
 export const login = ({ loginCredentials, history }: any) => (
   dispatch: Function
 ) => {
-  console.log("creds", loginCredentials);
   Axios.post(
     "http://frontend.interview.dingi.work/user/login/",
     loginCredentials
@@ -31,7 +30,14 @@ export const login = ({ loginCredentials, history }: any) => (
       history.push("/sales");
     })
     .catch((error) => {
-      console.log("err", error.response.data);
+      dispatch({
+        type: AUTHENTICATE,
+        payload: {
+          jwt_token: "",
+          authStatus: false,
+          error: error.response.data,
+        },
+      });
     });
 };
 
