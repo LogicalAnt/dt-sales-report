@@ -15,7 +15,7 @@ interface ActionProps {
   type: string;
   payload: { authStatus: boolean; jwt_token: string; error: object };
 }
-export const login = (
+export const auth = (
   state: AuthType = initialState,
   action: ActionProps
 ): AuthType => {
