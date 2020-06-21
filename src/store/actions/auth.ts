@@ -29,6 +29,15 @@ export const login = ({ loginCredentials, history }: any) => (
       //Set token onto axios header for every request
       Axios.defaults.headers.common["Authorization"] = `JWT ${data.jwt_token}`;
 
+      //fetch sales data
+      Axios.get("http://frontend.interview.dingi.work/user/data/")
+        .then((sales) => {
+          localStorage.setItem("salesdata", sales.data);
+        })
+        .catch((e) => {
+          console.log("data loading failed");
+        });
+
       //Redirect to login
       history.push("/sales");
     })
