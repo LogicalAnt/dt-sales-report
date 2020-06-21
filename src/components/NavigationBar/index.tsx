@@ -14,8 +14,7 @@ const NavigationBarComponent = ({ logoutSubmitter }: any) => {
       <Navbar variant="dark" bg="dark" expand="lg" sticky="top">
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
+            <Nav.Link href="/dashboard">Home</Nav.Link>
           </Nav>
           <Nav className="mr-md-4">
             <NavDropdown title="Dropdown" id="nav-dropdown">
