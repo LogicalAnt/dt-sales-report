@@ -1,55 +1,30 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import { connect } from "react-redux";
+import { BarChart } from "../../components/Charts/BarChart";
 import { NavigationBar } from "../../components/NavigationBar";
 import { Sidebar } from "../../components/Sidebar";
-
-export const Sales = () => {
+import { fetchSales } from "../../store/actions/sales";
+import { barChartData } from "./utils/barchartData";
+export const SalesComponent = ({ getAllSales }: any) => {
+  //if customer data not stored, store customer
+  //if (!store.getState().allCustomer.length) {
+  //getAllSales();
+  //}
+  interface BarDataType {
+    labels: Array<any>;
+    datasets: Array<object>;
+  }
+  const data: BarDataType = barChartData();
   return (
     <div className="wrapper">
       <Sidebar />
-      <div>
+      <div style={{ width: "100%" }}>
         <NavigationBar />
         <Container>
-          <Row>
-            <Col md={12}>
-              <main id="content">
-                <h1 className="page-header">Homepage</h1>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum. Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                  ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                  ea commodo consequat. Duis aute irure dolor in reprehenderit
-                  in voluptate velit esse cillum dolore eu fugiat nulla
-                  pariatur. Excepteur sint occaecat cupidatat nonLorem ipsum
-                  dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                  minim veniam, quis nostrud exercitation ullamco laboris nisi
-                  ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                  reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                  nulla pariatur. Excepteur sint occaecat cupidatat nonLorem
-                  ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                  enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat nonLorem ipsum dolor sit amet, consectetur
-                  adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                  exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                  sint occaecat cupidatat non
-                </p>
-              </main>
+          <Row className="mt-4">
+            <Col md={8}>
+              <BarChart {...data} />
             </Col>
           </Row>
         </Container>
@@ -57,3 +32,13 @@ export const Sales = () => {
     </div>
   );
 };
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    getAllSales: () => {
+      dispatch(fetchSales());
+    },
+  };
+};
+
+export const Sales = connect(null, mapDispatchToProps)(SalesComponent);
