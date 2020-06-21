@@ -32,7 +32,7 @@ export const login = ({ loginCredentials, history }: any) => (
       //fetch sales data
       Axios.get("http://frontend.interview.dingi.work/user/data/")
         .then((sales) => {
-          localStorage.setItem("salesdata", sales.data);
+          localStorage.setItem("salesdata", JSON.stringify(sales.data));
         })
         .catch((e) => {
           console.log("data loading failed");
@@ -66,5 +66,6 @@ export const logout = (history: any) => (dispatch: Function) => {
   });
 
   localStorage.removeItem("token");
+  localStorage.removeItem("salesdata");
   history.push("/login");
 };
