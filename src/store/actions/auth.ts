@@ -17,16 +17,19 @@ export const login = ({ loginCredentials, history }: any) => (
     .then((response) => {
       const data = response.data;
 
-      //call reducer
+      //Call reducer
       dispatch({
         type: AUTHENTICATE,
         payload: { ...data, authStatus: true, error: {} },
       });
 
-      // Set localstorage item
+      //Set localstorage item
       localStorage.setItem("token", data.jwt_token);
 
-      // redirect to login
+      //Set token onto axios header for every request
+      Axios.defaults.headers.common["Authorization"] = `JWT ${data.jwt_token}`;
+
+      //Redirect to login
       history.push("/sales");
     })
     .catch((error) => {
