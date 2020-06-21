@@ -1,9 +1,4 @@
 import { AUTHENTICATE } from "../actions/types";
-interface AuthType {
-  isAuthenticated: boolean;
-  userToken: string;
-  error: object;
-}
 
 const initialState = {
   isAuthenticated: false,
@@ -11,6 +6,11 @@ const initialState = {
   error: {},
 };
 
+interface AuthType {
+  isAuthenticated: boolean;
+  userToken: string;
+  error: object;
+}
 interface ActionProps {
   type: string;
   payload: { authStatus: boolean; jwt_token: string; error: object };
