@@ -1,5 +1,11 @@
 import React from "react";
+import { Pie } from "react-chartjs-2";
 
-export const PieChart = () => {
-  return <div>pie chart</div>;
+interface PieDataType {
+  labels: Array<any>;
+  datasets: Array<object>;
+}
+
+export const PieChart = ({ labels, datasets }: PieDataType) => {
+  return <Pie data={{ labels, datasets }} />;
 };
