@@ -36,7 +36,6 @@ export const pieChartData = () => {
     return 1;
   });
 
-  console.log("dwisesale", dayWiseSales);
   const products = Object.keys(dayWiseSales).sort();
 
   //dataset prop

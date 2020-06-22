@@ -24,7 +24,6 @@ export const SalesComponent = ({ getAllSales }: any) => {
   }
   const bardata: BarDataType = barChartData();
   const piedata: PieDataType = pieChartData();
-  console.log("piedata", piedata);
   return (
     <div className="wrapper">
       <Sidebar />

@@ -62,10 +62,6 @@ export const barChartData = () => {
     })
   );
 
-  //console.log("object", prodWiseSale);
-  //console.log("lab", labels);
-  //console.log("all", dayWiseSales);
-
   //dataset prop
   const datasets: any = [];
   allProduct.forEach((prod: any) => {

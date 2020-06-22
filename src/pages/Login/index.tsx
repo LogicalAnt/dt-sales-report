@@ -33,7 +33,6 @@ export const LoginComponent = ({ loginSubmitter }: any) => {
   });
   const submitHandler = (e: any) => {
     e.preventDefault();
-    console.log("state", loginCredentials);
     loginSubmitter({ loginCredentials, history });
   };
 
