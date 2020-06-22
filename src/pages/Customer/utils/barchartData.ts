@@ -1,4 +1,4 @@
-import { apidata } from "../../../components/Charts/data";
+import { salesData } from "../../../utils/salesData";
 interface SaleProps {
   date: string;
   customer_name: string;
@@ -9,12 +9,15 @@ interface SaleProps {
 }
 
 export const barChartData = () => {
+  const apidata = salesData();
   const date = new Date();
   const currentMonth = date.getMonth() + 1;
 
   const allSales = apidata; //store.getState().allSales;
   let dayWiseSales: any = [];
   let allDistrict = new Set();
+
+  salesData();
 
   //expect: [ 2020-05-30: [MotoTracker: 1, EagleCam: 2], ... ]
   allSales.map((sale: any) => {

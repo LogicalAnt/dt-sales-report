@@ -1,9 +1,10 @@
 import React from "react";
 import { Col, Container, Row, Table } from "react-bootstrap";
-import { apidata } from "../../components/Charts/data";
 import { NavigationBar } from "../../components/NavigationBar";
 import { Sidebar } from "../../components/Sidebar";
+import { salesData } from "../../utils/salesData";
 export const Items = () => {
+  const apidata = salesData();
   return (
     <div className="wrapper">
       <Sidebar />
@@ -24,7 +25,7 @@ export const Items = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {apidata.map((data) => (
+                  {apidata.map((data: any) => (
                     <tr>
                       <td>{data.date}</td>
                       <td>{data.customer_name}</td>

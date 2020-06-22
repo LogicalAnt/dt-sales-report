@@ -1,5 +1,6 @@
-import { apidata } from "../../../components/Charts/data";
+import { salesData } from "../../../utils/salesData";
 export const pieChartData = () => {
+  const apidata = salesData();
   const date = new Date();
   const currentMonth = date.getMonth() + 1;
 
@@ -7,7 +8,7 @@ export const pieChartData = () => {
   let dayWiseSales: any = [];
   let allProduct = new Set();
 
-  allSales.map((sale) => {
+  allSales.map((sale: any) => {
     const date = sale.date;
     const product = sale.product;
     const qty = sale.order_quantity;

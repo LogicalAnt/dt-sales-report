@@ -1,4 +1,4 @@
-import { apidata } from "../../../components/Charts/data";
+import { salesData } from "../../../utils/salesData";
 interface SaleProps {
   date: string;
   customer_name: string;
@@ -9,6 +9,7 @@ interface SaleProps {
 }
 
 export const barChartData = () => {
+  const apidata = salesData();
   const date = new Date();
   const currentMonth = date.getMonth() + 1;
 
